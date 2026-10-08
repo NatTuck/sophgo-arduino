@@ -80,7 +80,7 @@ FILENAME[arduino-sophgo]="arduino-sophgo.zip"
 TOOLNAME[arduino-sophgo]="arduino-sophgo"
 CORRESPONDINGPARENTDIR[arduino-sophgo]="${WORKDIR}"
 CORRESPONDINGDIRNAME[arduino-sophgo]="$(basename "$REPODIR")"
-EXCLUDEPATTERN[arduino-sophgo]="arduino-sophgo/.git**;arduino-sophgo/tools/*"
+EXCLUDEPATTERN[arduino-sophgo]="$(basename "$REPODIR")/.git**;$(basename "$REPODIR")/tools/*"
 # EXCLUDEPATTERN relative to the CORRESPONDINGPARENTDIR
 
 # add internal tools which need to be packaged
