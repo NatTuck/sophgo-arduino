@@ -42,6 +42,11 @@ Reset_Handler:
 //    la  gp, __global_pointer$
 .option pop
 
+#ifdef ARDUINO_OZ64
+    // Start with interrupts masked until irq_init() installs the core handlers.
+    csrci mstatus, 8
+    csrw mie, zero
+#endif
     // Continue primary hart
     csrr a0, mhartid
     // li   a1, PRIM_HART
@@ -100,6 +105,13 @@ Reset_Handler:
 
 2:
 
+#ifdef ARDUINO_OZ64
+    // x3 was used as scratch above. Set gp before linker-relaxed BSS accesses.
+.option push
+.option norelax
+    la gp, __global_pointer$
+.option pop
+#endif
     // Clear bss section
     la a0, _bss
     la a1, _ebss

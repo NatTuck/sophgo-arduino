@@ -297,6 +297,7 @@ csi_error_t csi_uart_get_state(csi_uart_t *uart, csi_state_t *state)
 
 void pr_printf(const char *format, ...)
 {
+#ifdef DEBUG_UART_BASE
     char loc_buf[64];
     char * temp = loc_buf;
     va_list arg;
@@ -335,4 +336,7 @@ void pr_printf(const char *format, ...)
         free(temp);
     }
     return len;
+#else
+    (void)format;
+#endif
 }
