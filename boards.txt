@@ -101,3 +101,23 @@ duos.build.img_freq=48m
 duos.build.partitions=default
 duos.build.defines=
 duos.build.ldscript=link.ld
+
+##############################################################
+
+oz64.name=PINE64 Oz64
+oz64.build.tarch=riscv64
+oz64.build.target=unknown
+oz64.build.mcu=sg200x
+oz64.build.core=sg200x
+oz64.build.variant=oz64
+oz64.build.board=OZ64
+oz64.build.extra_flags=
+oz64.build.bootloader_addr=0x0
+oz64.build.start_addr=0x9fe00000
+oz64.build.image_size=0x200000
+oz64.build.f_cpu=25000000L
+oz64.build.img_freq=48m
+oz64.build.partitions=default
+oz64.build.defines=
+oz64.build.ldscript=../duos/link.ld
+oz64.compiler.c.elf.extra_flags=-Wl,--defsym=__global_pointer$=_data+0x800
